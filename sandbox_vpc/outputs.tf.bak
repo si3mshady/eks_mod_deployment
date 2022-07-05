@@ -1,0 +1,21 @@
+output "magnataur_vpc_id" {
+  value = aws_vpc.magnataur-k8s-vpc-sandbox.id
+}
+
+output "magnataur_vpc_metadata" {
+  value = aws_vpc.magnataur-k8s-vpc-sandbox
+}
+
+output "magnataur_public_sg" {
+  value = aws_security_group.public_sg
+}
+
+
+output "vpc_public_subnets" {
+  value = aws_subnet.public_k8_subnets
+}
+
+
+output "vpc_private_subnets" {
+  value = aws_subnet.private_k8_subnets
+}
