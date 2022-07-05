@@ -134,12 +134,3 @@ data "aws_iam_policy_document" "eksdoc_assume_role_policy" {
 
 
 
-
-
-
-#   arn:aws:iam::359868554540:role/eks-admin
-#  aws eks --region us-west-1 update-kubeconfig --name elliotteks 
-# $ aws eks update-kubeconfig --name eks-cluster-name --region aws-region 
-# sed -i 's/elliotteks/elliotteks/g' main.tf
-
-# sed -i 's/elliotteks/elliotteks/g' main.tf
