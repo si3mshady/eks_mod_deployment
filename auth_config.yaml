@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: kube-system
+  name: aws-auth
+data:
+  config.yaml: |
+      mapRoles:
+      # statically map arn:aws:iam::000000000000:role/KubernetesAdmin to a cluster admin
+      - roleARN:  arn:aws:iam::698347480743:role/eks-admin
+        username: arn:aws:iam::698347480743:user/andyDufresne
+        groups: 
+          - system:masters       

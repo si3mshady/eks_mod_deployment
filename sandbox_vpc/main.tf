@@ -157,7 +157,7 @@ resource "aws_key_pair" "elliot_public_key" {
 
 
 resource "aws_instance" "web-bastion-public" {
-  ami           = "ami-085284d24fe829cd0"
+  ami           = "ami-05e18b6e52b45091e"
   instance_type = "t3.micro"
   associate_public_ip_address = true
   
@@ -171,7 +171,7 @@ resource "aws_instance" "web-bastion-public" {
 
 
 resource "aws_instance" "web-bastion-private" {
-  ami           = "ami-085284d24fe829cd0"
+  ami           = "ami-05e18b6e52b45091e"
   instance_type = "t3.micro"
   associate_public_ip_address = false
   
@@ -184,3 +184,69 @@ resource "aws_instance" "web-bastion-private" {
 }
 
 
+
+
+resource "aws_iam_group_policy" "devops_admin_group" {
+  name  = "devops_admin_group_policy"
+  group = aws_iam_group.devops_admin_group.name
+
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "*"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
+
+resource "aws_iam_group" "devops_admin_group" {
+  name = "devops_admin_group"
+  
+}
+
+
+
+
+resource "aws_iam_role" "eks-admin" {
+  name = "eks-admin"
+
+
+  inline_policy {
+    name = "admin_inline_policy"
+   policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = ["*"]
+        Effect   = "Allow"
+        Resource = "*"
+      }
+    ]
+  })
+  }
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+
+
+
+}   

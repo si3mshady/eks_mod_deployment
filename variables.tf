@@ -9,5 +9,5 @@ variable "vpc_cidr" {
 
 variable "aws_region" {
   type    = string
-  default = "us-west-1"
+  default = "us-west-2"
 }

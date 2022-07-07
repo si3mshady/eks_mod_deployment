@@ -134,3 +134,30 @@ data "aws_iam_policy_document" "eksdoc_assume_role_policy" {
 
 
 
+# elliotteks
+# terraform apply --auto-approve 
+# helm repo add bitnami https://charts.bitnami.com/bitnami
+# aws eks update-kubeconfig --name elliotteks --region us-west-2
+# kubectl create ns metrics
+# helm install kube-state-metrics bitnami/kube-state-metrics -n metrics 
+# helm ls -n metrics
+# kubectl get all -n metrics
+# kubectl logs pod/kube-state-metrics-bdbf7ddd7-djljd    -n metrics
+# kubectl port-forward svc/kube-state-metrics -n metrics  8080:8080
+# helm show chart bitnami/kube-state-metrics
+# helm show values bitnami/kube-state-metrics > values.yaml && code values.yaml
+# helm ls -n metrics 
+# helm upgrade kube-state-metrics bitnami/kube-state-metrics --version 3.0.5  -n metrics
+# helm install first-chart .
+# helm template first-chart .
+# helm upgrade first-chart .
+# kubectl describe cm  first-chart-configmap  - after creating a config map 
+# echo -n 'username' | base64
+# echo -n 'password' | base64     - creating secret
+# helm template first-chart .  - see the new secret before deploying changes to cluster 
+# helm upgrade first-chart .
+# kubectl describe secret first-secret
+# helm history first-chart
+# helm rollback first-chart 1
+#helm rollback first-chart
+#use templating language to update values  first-configmap-{{.Chart.Version}}
